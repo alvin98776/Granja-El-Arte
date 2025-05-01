@@ -3,20 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Advanced Responsive Webpage</title>
+  <title>Granja El Arte</title>
+  <script>
+	  // Immediately set the theme before rendering
+	  (function() {
+		const savedTheme = localStorage.getItem('theme');
+		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+		const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+		document.documentElement.setAttribute('data-theme', theme);
+	  })();
+	</script>
   <style>
     :root {
-      --bg-light: #ffffff;
-      --bg-dark: #121212;
-      --text-light: #333;
-      --text-dark: #f0f0f0;
-      --primary: #4f46e5;
-      --secondary: #10b981;
+      --bg-light: rgb(250,250,250);
+      --bg-dark: rgb(10,10,10);
+	  --card-light:rgb(255,255,255);
+	  --card-dark:rgb(60,60,60);
+      --text-light: rgb(0,0,0);
+      --text-dark: rgb(200,200,200);
+      --primary: rgb(150,150,150);
+      --secondary: rgb(180,180,180);
     }
 
     [data-theme="dark"] {
       --bg-light: var(--bg-dark);
       --text-light: var(--text-dark);
+      --card-light: var(--card-dark);
     }
 
     * {
@@ -49,30 +62,29 @@
       display: flex;
       list-style: none;
       gap: 1.5rem;
+	  cursor:pointer;
     }
+	
+nav ul li {
+  position: relative;
+}
 
-    nav ul li {
-      position: relative;
-    }
+nav ul li:hover > ul,
+nav ul li ul:hover {
+  display: block;
+}
 
-    nav ul li:hover ul {
-      display: block;
-    }
+nav ul li ul {
+  display: none;
+  position: absolute;
+  background: var(--bg-light);
+  top: 100%; /* No gap */
+  left: 0;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid #ddd;
+  z-index: 1000;
+}
 
-    nav ul li ul {
-      display: none;
-      position: absolute;
-      background: var(--bg-light);
-      top: 2.2rem;
-      left: 0;
-      padding: 0.5rem 0;
-      border: 1px solid #ddd;
-    }
-
-    nav ul li ul li {
-      padding: 0.5rem 1rem;
-      white-space: nowrap;
-    }
 
     .theme-toggle {
       cursor: pointer;
@@ -109,17 +121,22 @@
     }
 
     @media(min-width: 768px) {
-      .grid-3 {
-        grid-template-columns: repeat(3, 1fr);
-      }
+	  .grid-3 {
+		  grid-template-columns: repeat(3, 1fr);
+		  grid-auto-rows: auto;
+			align-items: start;
+		}
     }
 
     .card {
-      background: #f9f9f9;
+      background: var(--card-light);
       padding: 1.5rem;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       transition: transform 0.3s;
+    }
+    .card-img {
+		width:100%;
     }
 
     .card:hover {
@@ -127,74 +144,121 @@
     }
 
     footer {
-      background: #f1f1f1;
+      background: #000;
       text-align: center;
-      padding: 2rem;
-      margin-top: 4rem;
+      padding: 0.05rem;
+      margin-top: 0.05rem;
     }
 
     /* Responsive Typography */
     h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
     h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
     p  { font-size: clamp(1rem, 2vw, 1.2rem); }
+	
+	    .cool-button {
+      background: linear-gradient(135deg, #6e8efb, #a777e3);
+      border: none;
+      color: white;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-family: 'Segoe UI', sans-serif;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .cool-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #5e7dfb, #9a66e3);
+    }
+
+    .cool-button:active {
+      transform: translateY(1px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
 
   </style>
 </head>
 <body>
   <header>
-    <h2>Granja El Arte</h2>
+    <div><img style="height:6rem;" src="logo.svg"></img></div>
     <nav>
       <ul>
-        <li>Home</li>
-        <li>About
+        <li href="index.html">Inicio</li>
+        <li href="nosotros.html">Nosotros
           <ul>
-            <li>Team</li>
-            <li>Vision</li>
+            <li href="equipo.html">Equipo</li>
+            <li href="vision.html">Visi&oacute;n</li>
+			<li href="valores.html">Valores</li>
           </ul>
         </li>
-        <li>Services</li>
-        <li>Contact</li>
+        <li href="catalogo.html">Cat&aacute;logo
+		  <ul>
+            <li href="productos.html">Productos</li>
+            <li href="cursos.html">Cursos</li>
+			<li href="servicios.html">Servicios</li>
+          </ul>
+		 </li>
+        <li href="contacto.html">Contacto</li>
       </ul>
     </nav>
     <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
   </header>
 
+
   <section class="hero">
-    <div>
-      <h1>Welcome to the Future</h1>
-      <p>Build modern, accessible, responsive web experiences.</p>
+	<img src="background.png" style="position:absolute;left:0;width:100%;"></img>
+    <div style="position:absolute;left:0;width:100%;">
+      <h1>Bienvenidos Al Futuro Del Arte</h1>
+      <p>Granja, Mercaderia, Liderazgo.</p>
     </div>
   </section>
 
   <section class="container">
-    <h2 style="margin-bottom: 1rem;">Our Features</h2>
+    <h2 style="margin-bottom: 1rem;">¡Descubre Nuestros Productos!</h2>
+	<div class="grid grid-3">
+	  <div class="card">
+		<img class="card-img" src="pitaya.png"></img>
+        <h3>Pitaya (Fruta del Drag&oacute;n)</h3>
+        <p>La pitaya, también conocida como fruta del dragón, es un fruto exótico con múltiples beneficios para la salud.</p>
+		<button class="cool-button" onclick="window.open('pitaya.html', '_blank')"><b>M&aacute;s</b></button>
+      </div>
+    </div>
+  </section>
+  <section class="container">
+    <h2 style="margin-bottom: 1rem;">¡Descubre Nuestros Cursos!</h2>
     <div class="grid grid-3">
       <div class="card">
-        <h3>Responsive Design</h3>
-        <p>Adapts beautifully to every screen size using CSS Grid and Flexbox.</p>
+		<img class="card-img" src="podcast.png"></img>
+        <h3>Podcast en Ledaschaft</h3>
+        <p>Durch die Vermittlung der 21 Gesetze für Leiterschaft fördern wir authentische, transparente und freundschaftliche Kommunikation in Gruppen.</p>
+		<button class="cool-button" onclick="window.open('https://www.youtube.com/@ledaschaftkunst', '_blank')"><b>Anh&ouml;ren</b></button>
       </div>
       <div class="card">
-        <h3>Dark Mode</h3>
-        <p>Switch between light and dark themes with a single click.</p>
-      </div>
-      <div class="card">
-        <h3>Accessibility</h3>
-        <p>Built with semantic HTML and keyboard-friendly navigation.</p>
+		<img class="card-img" src="leadership.png"></img>
+        <h3>Entrenamiento en Liderazgo</h3>
+        <p>Mejora tu liderazgo con sessiones con el entrenador de liderazgo Ewald Driedger</p>
+		<button class="cool-button" onclick="window.open('liderazgo.html', '_blank')"><b>M&aacute;s</b></button>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 MyBrand. All rights reserved.</p>
+    <a style="font-size:8pt;">© 2025 Granja El Arte. Todos derechos reservados.</a>
   </footer>
 
   <script>
-    function toggleTheme() {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', newTheme);
-    }
-  </script>
+	  function toggleTheme() {
+		const root = document.documentElement;
+		const currentTheme = root.getAttribute('data-theme');
+		const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+		root.setAttribute('data-theme', newTheme);
+		localStorage.setItem('theme', newTheme);
+	  }
+	</script>
+
 </body>
 </html>
 
