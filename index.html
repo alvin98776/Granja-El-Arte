@@ -46,17 +46,20 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      background-color: var(--bg-light);
-      border-bottom: 1px solid #ccc;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-    }
+   header {
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-light);
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+.logo {
+  height: 6rem;
+}
 
     nav ul {
       display: flex;
@@ -122,7 +125,7 @@ nav ul li ul {
 
     @media(min-width: 768px) {
 	  .grid-3 {
-		  grid-template-columns: repeat(3, 1fr);
+		  grid-template-columns: repeat(2, 1fr);
 		  grid-auto-rows: auto;
 			align-items: start;
 		}
@@ -182,29 +185,9 @@ nav ul li ul {
   </style>
 </head>
 <body>
-  <header>
-    <div><img style="height:6rem;" src="logo.svg"></img></div>
-    <nav>
-      <ul>
-        <li href="nosotros.html">Nosotros
-          <ul>
-            <li href="equipo.html">Equipo</li>
-            <li href="vision.html">Visi&oacute;n</li>
-			<li href="valores.html">Valores</li>
-          </ul>
-        </li>
-        <li href="catalogo.html">Cat&aacute;logo
-		  <ul>
-            <li href="productos.html">Productos</li>
-            <li href="cursos.html">Cursos</li>
-			<li href="servicios.html">Servicios</li>
-          </ul>
-		 </li>
-        <li href="contacto.html">Contacto</li>
-      </ul>
-    </nav>
-    <div class="theme-toggle" onclick="toggleTheme()">🌓</div>
-  </header>
+<header>
+  <img src="logo.svg" class="logo">
+</header>
 
 
 <section class="hero" style="background-image: url('background.png'), linear-gradient(135deg, #4f46e5, #10b981); background-size: cover; background-position: center; height: 400px;">
@@ -221,7 +204,8 @@ nav ul li ul {
 		<img class="card-img" src="pitaya.png"></img>
         <h3>Pitaya (Fruta del Drag&oacute;n)</h3>
         <p>La pitaya, también conocida como fruta del dragón, es un fruto exótico con múltiples beneficios para la salud.</p>
-		<button class="cool-button" onclick="window.open('pitaya.html', '_blank')"><b>M&aacute;s</b></button>
+		<!--<button class="cool-button" onclick="window.open('pitaya.html', '_blank')"><b>M&aacute;s</b></button>-->
+		<button class="cool-button" onclick="window.open('https://wa.me/595971436560', '_blank')"><b>Whatsapp</b></button>
       </div>
     </div>
   </section>
@@ -238,7 +222,18 @@ nav ul li ul {
 		<img class="card-img" src="leadership.png"></img>
         <h3>Entrenamiento en Liderazgo</h3>
         <p>Mejora tu liderazgo con sessiones con el entrenador de liderazgo Ewald Driedger</p>
-		<button class="cool-button" onclick="window.open('liderazgo.html', '_blank')"><b>M&aacute;s</b></button>
+		<!--<button class="cool-button" onclick="window.open('liderazgo.html', '_blank')"><b>M&aacute;s</b></button>-->
+		<button class="cool-button" onclick="window.open('https://wa.me/595971436560', '_blank')"><b>Whatsapp</b></button>
+      </div>
+	  <div class="card">
+		<!--<img class="card-img" src="pitaya.png"></img>-->
+		<video width="600" controls>
+		  <source src="vid.mp4" type="video/mp4">
+		  Dein Browser unterstützt kein Video.
+		</video>
+        <h3>Kurs: Wie kann ich Zuhause selber Pitayas Produzieren?</h3>
+        <p>Starte deine eigene Pitaya-Produktion ganz einfach von zuhause aus. Lerne Schritt für Schritt Anbau, Pflege und Ernte dieser exotischen Frucht. Freuen uns f&uuml;r deine Beteiligung!</p>
+		<button class="cool-button" onclick="window.open('pitayacourse.html', '_blank')"><b>Beginnen</b></button>
       </div>
     </div>
   </section>
