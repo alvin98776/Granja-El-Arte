@@ -99,11 +99,12 @@ nav ul li ul {
     .hero {
       display: grid;
       place-items: center;
-      height: 60vh;
+	  padding: 2rem;
+	  padding-top:6rem;
+	  padding-bottom:6rem;
       background: linear-gradient(135deg, #4f46e5, #10b981);
       color: white;
       text-align: center;
-      padding: 2rem;
       animation: fadeIn 1s ease-in-out;
     }
 
@@ -120,14 +121,18 @@ nav ul li ul {
 
     .grid {
       display: grid;
-      gap: 2rem;
+      gap: 3rem;
     }
 
     @media(min-width: 768px) {
 	  .grid-3 {
 		  grid-template-columns: repeat(2, 1fr);
 		  grid-auto-rows: auto;
-			align-items: start;
+			align-items: center;
+		}
+		.hero {
+		  padding-top:12rem;
+		  padding-bottom:12rem;
 		}
     }
 
@@ -137,16 +142,27 @@ nav ul li ul {
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       transition: transform 0.3s;
+	  max-width:80rem;
+	  text-align:center;
+	  margin-bottom:3rem;
     }
     .card-img {
-		width:100%;
-    }
+	  width: 100%;
+	  height: auto;
+	}
 
+	.cardvideo {
+	  width: 100%;
+	  height: auto;
+	  display: block;
+	}
     .card:hover {
       transform: translateY(-5px);
+	  border:1px solid black;
     }
 
     footer {
+		color:white;
       background: #000;
       text-align: center;
       padding: 0.05rem;
@@ -169,6 +185,7 @@ nav ul li ul {
       cursor: pointer;
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
       transition: all 0.3s ease-in-out;
+	  margin-top:5px;
     }
 
     .cool-button:hover {
@@ -181,6 +198,7 @@ nav ul li ul {
       transform: translateY(1px);
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
+
 	
 	.google-input {
   width: 100%;
@@ -235,108 +253,97 @@ nav ul li ul {
 	<div id="codeerror" style="color:red;"></div>
 	</div>
     <div class="grid grid-3" id="sessions" style="display:none;">
-	  <div class="card">
-		<!--<img class="card-img" src="pitaya.png"></img>-->
-		<video width="600" controls>
-		  <source src="pitayacurso1.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none';">
-		  Dein Browser unterstützt kein Video.
-		</video>
-        <h3>Session 1</h3>
-      </div>
-	  <div class="card">
-		<!--<img class="card-img" src="pitaya.png"></img>-->
-		<video width="600" controls>
-		  <source src="pitayacurso2.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none';">
-		  Dein Browser unterstützt kein Video.
-		</video>
-        <h3>Session 2</h3>
-      </div>
-	  <div class="card">
-		<!--<img class="card-img" src="pitaya.png"></img>-->
-		<video width="600" controls>
-		  <source src="pitayacurso3.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none';">
-		  Dein Browser unterstützt kein Video.
-		</video>
-        <h3>Session 3</h3>
-      </div>
-	  <div class="card">
-		<!--<img class="card-img" src="pitaya.png"></img>-->
-		<video width="600" controls>
-		  <source src="pitayacurso4.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none';">
-		  Dein Browser unterstützt kein Video.
-		</video>
-        <h3>Session 4</h3>
-      </div>
-	  <div class="card">
-		<!--<img class="card-img" src="pitaya.png"></img>-->
-		<video width="600" controls>
-		  <source src="pitayacurso5.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none';">
-		  Dein Browser unterstützt kein Video.
-		</video>
-        <h3>Session 5</h3>
-      </div>
-	  <div class="card">
-		<!--<img class="card-img" src="pitaya.png"></img>-->
-		<video width="600" controls>
-		  <source src="pitayacurso6.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none';">
-		  Dein Browser unterstützt kein Video.
-		</video>
-        <h3>Session 6</h3>
-      </div>
-	  <div class="card">
-		<!--<img class="card-img" src="pitaya.png"></img>-->
-		<video width="600" controls>
-		  <source src="pitayacurso7.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none';">
-		  Dein Browser unterstützt kein Video.
-		</video>
-        <h3>Session 7</h3>
-      </div>
-	  <div class="card">
-		<!--<img class="card-img" src="pitaya.png"></img>-->
-		<video width="600" controls>
-		  <source src="pitayacurso8.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none';">
-		  Dein Browser unterstützt kein Video.
-		</video>
-        <h3>Session 8</h3>
-      </div>
-	  <div class="card">
-		<!--<img class="card-img" src="pitaya.png"></img>-->
-		<video width="600" controls>
-		  <source src="pitayacurso9.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none';">
-		  Dein Browser unterstützt kein Video.
-		</video>
-        <h3>Session 9</h3>
-      </div>
-	  <div class="card">
-		<!--<img class="card-img" src="pitaya.png"></img>-->
-		<video width="600" controls>
-		  <source src="pitayacurso10.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none';">
-		  Dein Browser unterstützt kein Video.
-		</video>
-        <h3>Session 10</h3>
-      </div>
-	  <div class="card">
-		<!--<img class="card-img" src="pitaya.png"></img>-->
-		<video width="600" controls>
-		  <source src="pitayacurso11.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none';">
-		  Dein Browser unterstützt kein Video.
-		</video>
-        <h3>Session 11</h3>
-      </div>
-	  <div class="card">
-		<!--<img class="card-img" src="pitaya.png"></img>-->
-		<video width="600" controls>
-		  <source src="pitayacurso12.mp4" type="video/mp4" onerror="this.parentElement.parentElement.style.display='none';">
-		  Dein Browser unterstützt kein Video.
-		</video>
-        <h3>Session 12</h3>
-      </div>
+	  <div class="loader"></div>
     </div>
   </section>
 
   <script>
 	var SecurityCode=6486;
+		/*
+		var sessiones={
+			"1":new Date("2026-04-8"),
+			"2":new Date("2026-04-21"),
+			"3":new Date("2026-04-28"),
+			"4":new Date("2026-05-5"),
+			"5":new Date("2026-05-12"),
+			"6":new Date("2026-05-19"),
+			"7":new Date("2026-05-26"),
+			"8":new Date("2026-06-2"),
+			"9":new Date("2026-06-9"),
+			"10":new Date("2026-06-16"),
+			"11":new Date("2026-06-23"),
+			"12":new Date("2026-06-30")
+		};
+		*/
+		var sessiones={
+			"1":new Date("2025-04-8"),
+			"2":new Date("2025-04-21"),
+			"3":new Date("2025-04-28"),
+			"4":new Date("2025-05-5"),
+			"5":new Date("2025-05-12"),
+			"6":new Date("2025-05-19"),
+			"7":new Date("2025-05-26"),
+			"8":new Date("2025-06-2"),
+			"9":new Date("2025-06-9"),
+			"10":new Date("2025-06-16"),
+			"11":new Date("2025-06-23"),
+			"12":new Date("2025-06-30")
+		};
+		
+		let hour = new Date().getHours();
+		let maxFutureCounter=2;
+		let FutureCounter=0;
+		let releaseHour=20;
+		
+		function availableContent(){
+			var sessionid=0;
+			for(var i=1;i<=Object.keys(sessiones).length;i++){
+			let targetDate = sessiones[i]; // change this
+
+			let today = new Date();
+			today.setHours(0,0,0,0);
+			targetDate.setHours(0,0,0,0);
+
+			let diffDays = Math.ceil((targetDate - today) / (1000 * 60 * 60 * 24));
+
+			let text = diffDays === 0 ? "Es Hoy! "+releaseHour+':00'
+					 : diffDays === 1 ? "Disponible Ma&ntilde;ana "+releaseHour+':00' 
+					 : "Faltan " + diffDays + " D&iacute;as";
+				
+				text='<span>Session '+i+', '+text+'</span>';
+				if(diffDays>15){text='<span>...</span>';FutureCounter++}
+				if(FutureCounter>=maxFutureCounter){text='';}
+				
+
+				sessionid='session'+i;
+				
+				if((diffDays>0)||((diffDays==0)&&(hour<releaseHour))){document.getElementById(sessionid).innerHTML=text;if(text==''){document.getElementById(sessionid).style.display='none';}}else{document.getElementById(sessionid).innerHTML+=targetDate.getDate() + " " + 
+                targetDate.toLocaleString('es-ES', { month: 'long' });}
+			}
+		}
+		
+		function loadVideo(el, i){
+			el.innerHTML = `
+			<video width="600" class="cardvideo" controls autoplay>
+				<source src="pitayacurso${i}.mp4" type="video/mp4"
+				onerror="this.parentElement.parentElement.innerHTML='<br><br>Video no Disponible :(<br><br><br>';">
+			</video>`;
+		}
+	
 		function onload(){
+			var data='';
+			for(var i=1;i<=Object.keys(sessiones).length;i++){
+				data += `
+					<div class="card" id="session${i}">
+						<div class="card-img" onclick="loadVideo(this, ${i})" style="cursor:pointer; display:flex; align-items:center; justify-content:center; background:#000; color:#fff;">
+							<div style="padding:5rem;">▶ Play</div>
+						</div>
+						<h3>Session ${i}</h3>
+					</div>
+					`;
+			}
+			document.getElementById('sessions').innerHTML=data;
+			availableContent();
 			if(localStorage.getItem("code")!=null){verifyCode();}
 		}
 		function verifyCode(){
