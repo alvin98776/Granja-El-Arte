@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Granja El Arte</title>
+  <script>
+	  // Immediately set the theme before rendering
+	  (function() {
+		const savedTheme = localStorage.getItem('theme');
+		const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+		const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+		document.documentElement.setAttribute('data-theme', theme);
+	  })();
+	</script>
+  <style>
+    :root {
+      --bg-light: rgb(250,250,250);
+      --bg-dark: rgb(10,10,10);
+	  --card-light:rgb(255,255,255);
+	  --card-dark:rgb(60,60,60);
+      --text-light: rgb(0,0,0);
+      --text-dark: rgb(200,200,200);
+      --primary: rgb(150,150,150);
+      --secondary: rgb(180,180,180);
+    }
+
+    [data-theme="dark"] {
+      --bg-light: var(--bg-dark);
+      --text-light: var(--text-dark);
+      --card-light: var(--card-dark);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+   header {
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-light);
+  border-bottom: 1px solid #eee;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+.logo {
+  height: 6rem;
+}
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+	  cursor:pointer;
+    }
+	
+nav ul li {
+  position: relative;
+}
+
+nav ul li:hover > ul,
+nav ul li ul:hover {
+  display: block;
+}
+
+nav ul li ul {
+  display: none;
+  position: absolute;
+  background: var(--bg-light);
+  top: 100%; /* No gap */
+  left: 0;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid #ddd;
+  z-index: 1000;
+}
+
+
+    .theme-toggle {
+      cursor: pointer;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .hero {
+      display: grid;
+      place-items: center;
+	  padding: 2rem;
+	  padding-top:6rem;
+	  padding-bottom:6rem;
+      background: linear-gradient(135deg, #4f46e5, #10b981);
+      color: white;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 3rem;
+    }
+
+    @media(min-width: 768px) {
+	  .grid-3 {
+		  grid-template-columns: repeat(2, 1fr);
+		  grid-auto-rows: auto;
+			align-items: center;
+		}
+		.hero {
+		  padding-top:12rem;
+		  padding-bottom:12rem;
+		}
+    }
+
+    .card {
+      background: var(--card-light);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+	  max-width:80rem;
+	  text-align:center;
+	  margin-bottom:3rem;
+    }
+    .card-img {
+	  width: 100%;
+	  height: auto;
+	}
+
+	.cardvideo {
+	  width: 100%;
+	  height: auto;
+	  display: block;
+	}
+    .card:hover {
+      transform: translateY(-5px);
+	  border:1px solid black;
+    }
+
+    footer {
+		color:white;
+      background: #000;
+      text-align: center;
+      padding: 0.05rem;
+      margin-top: 0.05rem;
+    }
+
+    /* Responsive Typography */
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+    p  { font-size: clamp(1rem, 2vw, 1.2rem); }
+	
+	    .cool-button {
+      background: linear-gradient(135deg, #6e8efb, #a777e3);
+      border: none;
+      color: white;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-family: 'Segoe UI', sans-serif;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease-in-out;
+	  margin-top:5px;
+    }
+
+    .cool-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #5e7dfb, #9a66e3);
+    }
+
+    .cool-button:active {
+      transform: translateY(1px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+	
+	.google-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px 16px;
+  border-radius: 24px;
+  border: 1px solid #dfe1e5;
+  font-size: 16px;
+  outline: none;
+  transition: box-shadow 0.2s ease;
+}
+
+.google-input:hover,
+.google-input:focus {
+  box-shadow: 0 1px 6px rgba(32,33,36,0.28);
+  border-color: rgba(223,225,229,0);
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 4px solid #eee;
+  border-top: 4px solid #4285f4;
+  border-radius: 50%;
+  animation: spin .43s linear infinite;
+  margin: 2px auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+  </style>
+</head>
+<body onload="onload();">
+<header>
+  <img src="logo.svg" class="logo">
+</header>
+
+  <section class="container">
+    <h2 style="margin-bottom: 1rem;">Kurs: Wie kann ich Zuhause selber Pitayas Produzieren?</h2>
+	<div id="sellerpage">
+	<p>Gebe hier dein Code ein:</p>
+	<input class="google-input" id="code" placeholder="Codigo"/>
+	<button class="cool-button" onclick="verifyCode();"><b>Beginnen</b></button>
+	<div id="codeerror" style="color:red;"></div>
+	</div>
+    <div class="grid grid-3" id="sessions" style="display:none;">
+	  <div class="loader"></div>
+    </div>
+  </section>
+
+  <script>
+	var SecurityCode=6486;
+		
+		var sessiones={
+			"1":new Date("2026-04-8"),
+			"2":new Date("2026-04-21"),
+			"3":new Date("2026-04-28"),
+			"4":new Date("2026-05-5"),
+			"5":new Date("2026-05-12"),
+			"6":new Date("2026-05-19"),
+			"7":new Date("2026-05-26"),
+			"8":new Date("2026-06-2"),
+			"9":new Date("2026-06-9"),
+			"10":new Date("2026-06-16"),
+			"11":new Date("2026-06-23"),
+			"12":new Date("2026-06-30")
+		};
+		/*
+		var sessiones={
+			"1":new Date("2025-04-8"),
+			"2":new Date("2025-04-21"),
+			"3":new Date("2025-04-28"),
+			"4":new Date("2025-05-5"),
+			"5":new Date("2025-05-12"),
+			"6":new Date("2025-05-19"),
+			"7":new Date("2025-05-26"),
+			"8":new Date("2025-06-2"),
+			"9":new Date("2025-06-9"),
+			"10":new Date("2025-06-16"),
+			"11":new Date("2025-06-23"),
+			"12":new Date("2025-06-30")
+		};*/
+		
+		let hour = new Date().getHours();
+		let maxFutureCounter=2;
+		let FutureCounter=0;
+		let releaseHour=20;
+		
+		function availableContent(){
+			var sessionid=0;
+			for(var i=1;i<=Object.keys(sessiones).length;i++){
+			let targetDate = sessiones[i]; // change this
+
+			let today = new Date();
+			today.setHours(0,0,0,0);
+			targetDate.setHours(0,0,0,0);
+
+			let diffDays = Math.ceil((targetDate - today) / (1000 * 60 * 60 * 24));
+
+			let text = diffDays === 0 ? "Es Hoy! "+releaseHour+':00'
+					 : diffDays === 1 ? "Disponible Ma&ntilde;ana "+releaseHour+':00' 
+					 : "Faltan " + diffDays + " D&iacute;as";
+				
+				text='<span>Session '+i+', '+text+'</span>';
+				if(diffDays>15){text='<span>...</span>';FutureCounter++}
+				if(FutureCounter>=maxFutureCounter){text='';}
+				
+
+				sessionid='session'+i;
+				
+				if((diffDays>0)||((diffDays==0)&&(hour<releaseHour))){document.getElementById(sessionid).innerHTML=text;if(text==''){document.getElementById(sessionid).style.display='none';}}else{document.getElementById(sessionid).innerHTML+=targetDate.getDate() + " " + 
+                targetDate.toLocaleString('es-ES', { month: 'long' });}
+			}
+		}
+		
+		function loadVideo(el, i){
+			el.innerHTML = `
+			<video width="600" class="cardvideo" controls autoplay>
+				<source src="pitayacurso${i}.mp4" type="video/mp4"
+				onerror="this.parentElement.parentElement.innerHTML='<br><br>Video no Disponible :(<br><br><br>';">
+			</video>`;
+		}
+	
+		function onload(){
+			var data='';
+			for(var i=1;i<=Object.keys(sessiones).length;i++){
+				data += `
+					<div class="card" id="session${i}">
+						<div class="card-img" onclick="loadVideo(this, ${i})" style="cursor:pointer; display:flex; align-items:center; justify-content:center; background:#000; color:#fff;">
+							<div style="padding:5rem;">▶ Play</div>
+						</div>
+						<h3>Session ${i}</h3>
+					</div>
+					`;
+			}
+			document.getElementById('sessions').innerHTML=data;
+			availableContent();
+			if(localStorage.getItem("code")!=null){verifyCode();}
+		}
+		function verifyCode(){
+			var waitingtime=1000;
+			var code=document.getElementById('code').value;
+			if(localStorage.getItem("code")!=null){code=localStorage.getItem("code");}
+			if(document.getElementById('code').value.length<1){waitingtime=0;}
+			if(code==SecurityCode){document.getElementById('codeerror').innerHTML='<div class="wrap" style="width:200px;"><div class="loader"></div><a style="color:black;">Verificando..</a></div>';setTimeout(function(){document.getElementById('sellerpage').style.display='none';document.getElementById('sessions').style.display='block';},waitingtime);localStorage.setItem("code", SecurityCode);}else{document.getElementById('codeerror').innerHTML='*El codigo es incorrecto!';}
+		}
+		
+	  function toggleTheme() {
+		const root = document.documentElement;
+		const currentTheme = root.getAttribute('data-theme');
+		const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+		root.setAttribute('data-theme', newTheme);
+		localStorage.setItem('theme', newTheme);
+	  }
+	</script>
+
+</body>
+</html>
